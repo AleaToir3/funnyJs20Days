@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./syle.css">
+    <title>Calcul IMC</title>
+</head>
+<body>
+
+    <h1>Calculateur d'IMC</h1>
+    <form id="form" onsubmit="return false">
+        <div class="container">
+            <div class="infos">
+                <label for="poid">Entre votre poid en kg</label>
+                <input type="text" name="poid" id="poid">
+                
+                <label for="taille">Entre votre taille cm</label>
+                <input type="text" name="taille" id="taille"></label>
+            </div>  
+            <div class="btn">
+                <input type="submit" value="Calculer" id="btn">
+            </div>  
+            <div id="res">
+                <!-- RESULTA DE L IMC -->
+            </div>
+        </div>
+    </form>
+ 
+		<script src="./index.js"></script>
+</body>
+</html>
