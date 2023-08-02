@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wikipedia API</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+      <div class="container">
+        <div class="entete">
+          <img src="./ressources/wiki-logo.png" alt="image wiki">
+          <h1>Recherche <span>Wikipedia</span> </h1>
+        </div>
+        <form id="form">          
+          <input type="text" name="searchIndex" id="searchIndex" placeholder="Recherche...">
+          <select id="nbSearchIndex">
+            <option value="0" disabled selected>nb result</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="75">75</option>
+            <option value="100">100</option>
+          </select>
+          <button id="btn">Start</button>
+        </form>
+        <div class="containerDisplayCards"></div>
+        <div class="loading">
+          <span class="loader"></span>
+        </div>
+      </div>
+        <script src="app.js"></script>
+  </body>
+</html>
+ <div>
+ </div>
