@@ -12,3 +12,11 @@ body {
   background: linear-gradient(to right, #e0eafc, #cfdef3);
   padding: clamp(20px, 5vw, 50px) 20px 10px;
 }
+.err{
+  border: 1px solid red;
+  color: red;
+}
+.valid{
+  border: 1px solid rgb(21, 185, 73);
+  color: rgb(21, 185, 73);
+}
