@@ -8,4 +8,29 @@ body {
     font-family: Lato, sans-serif;
     background: linear-gradient(to right, #ffefba, #ffffff); 
     padding: clamp(20px, 5vw, 50px) 20px 10px;
+    font-size: 1.5rem;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.monForm{
+    display: flex;
+    flex-direction: column;
+}
+.btn{   
+    background: rgb(99, 153, 99);
+    color: white;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    border: 0;
+    border-radius: 5px;
+}
+input[type="text"]{
+border: 0;
+padding: 0.5rem;
+box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+border-radius: 5px;
 }
