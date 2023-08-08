@@ -19,10 +19,12 @@ monForm.addEventListener('click', (e) => {
 
 
 function pop(){
-    console.log("creation de la div ");
     const div = document.createElement('div')
     div.classList.add("popupp")
-    div.textContent= "COUCOU ICI"
-    container.appendChild(div)
+    div.textContent= "🍪Aouter ✅"
+    popupValidation.appendChild(div)
     div.classList.add("apparait")    
+    setTimeout(function(){
+        popupValidation.innerHTML = ""
+    },3000)    
 }
