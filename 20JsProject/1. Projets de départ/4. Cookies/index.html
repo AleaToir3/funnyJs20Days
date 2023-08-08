@@ -17,16 +17,26 @@
       <div class="container">
         <h1>🍪 Coooooooooookie 🍪</h1>
         <form class="monForm">
-          <label for="nom">Entre le nom</label>
+            <label for="nom">Entre le nom</label>
             <input type="text" name="nom" id="nom">
 
             <label for="valeur">Entre la valeur</label>
             <input type="text" name="valeur" id="valeur">
-           <div class="validation">
+
+            <div class="validation">
              <input type="submit" value="Valider" class="btn">
              <button class="btn" id="btnafficher">Afficher</button>
             </div>
+
         </form>
+        <div id="containerPostit">
+          <div id="postit">
+            <p>Nom : Roger</p>
+            <p>Valeur : 123</p>
+            <span id="spanDelete">X</span>
+          </div>
+        </div>
+
         <div id="popupValidation"></div>
       </div>
     <script src="app.js"></script>
