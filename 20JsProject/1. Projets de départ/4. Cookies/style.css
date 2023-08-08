@@ -34,7 +34,6 @@ padding: 0.5rem;
 box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 border-radius: 5px;
 }
-
 .popupp{
     background: green;
     color: #ffffff;
@@ -44,7 +43,18 @@ border-radius: 5px;
     margin: 1rem;
     border-radius: 5px;
     padding: 0.5rem;
-    transition: opacity 1s ease; /* Utilisez une transition sur l'opacité pour une apparition en 1 seconde */
-    opacity: 0; /* Commencez avec une opacité de 0 pour cacher la div */
-
+    opacity: 0;               
 }
+.apparait{
+    animation: fadeInOutAnimation 2s ease-in-out;
+}
+ 
+
+@keyframes fadeInOutAnimation {
+    0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
