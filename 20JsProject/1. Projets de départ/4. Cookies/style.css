@@ -10,7 +10,10 @@ body {
     padding: clamp(20px, 5vw, 50px) 20px 10px;
     font-size: 1.5rem;
 }
+h1{
+    white-space: nowrap;
 
+}
 .container{
     display: flex;
     flex-direction: column;
@@ -48,7 +51,27 @@ border-radius: 5px;
 .apparait{
     animation: fadeInOutAnimation 3s ease-in-out;
 }
- 
+#containerPostit{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+#postit{
+   position: relative;
+    width: 200px;
+    background: #f8d668;
+    border-radius: 5px;
+    padding: 1.5rem ;
+    margin: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+#spanDelete{
+    font-size:0.8rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem;
+    cursor: pointer;
+}
 
 @keyframes fadeInOutAnimation {
     0% {
