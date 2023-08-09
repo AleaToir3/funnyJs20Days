@@ -5,10 +5,13 @@ const inputs = document.querySelectorAll("input[type='text']")
 
 monForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    
-    if (inputs[0].value && inputs[1].value) {
-        createCookie(inputs)
+    const nom = inputs[0].value;
+    const valeur = inputs[1].value;
+    if(nom&&valeur){
+        createCookie(nom,valeur)
         pop("ajout")
+        inputs[0].value = '';
+        inputs[1].value ='';
     }
 });
 
@@ -36,51 +39,47 @@ function pop(status) {
     }, 3000)
 }
 
-function createCookie(inputs) {
-    let nom;
-    let valeur;
-    inputs.forEach(input => {
-        if (input.name == "nom") nom = input.value
-        if (input.name == "valeur") valeur = input.value
-    });
-    inputs[0].value = ""
-    inputs[1].value = ""
+function createCookie(nom,valeur) {
     return document.cookie = `${nom} = ${valeur}`
 }
 
 function readCookie() {
-    const listCookies = document.cookie ? document.cookie.split(";") : null;
-    let nom;
-    let valeur;
+    
     let deleteSpans = document.querySelectorAll(".spanDelete")
- 
+    const listCookies = document.cookie ? document.cookie.split(";") : null;
+    
     if(listCookies) {
-       console.log("coucou")
         containerPostit.innerHTML = ""
         listCookies.forEach((cookie, indexCookie) => {
-            // console.log('le cookie',cookie,"sonINDEX:",indexCookie)
-            cookie = cookie.split("=")
-            containerPostit.innerHTML += `<div id="postit" name=${indexCookie}>
-            <p>Nom : ${cookie[0]} </p>
-            <p>Valeur : ${cookie[1]}</p>
-            <span class="spanDelete">❌</span>
-            </div>`
+            const [nom, valeur] = cookie.trim().split("=");
+            const postit = document.createElement('div');
+            postit.id = "postit";
+            postit.setAttribute("name", indexCookie);
+    
+            const nomPara = document.createElement('p');
+            nomPara.textContent = `Nom : ${nom}`;
+            const valeurPara = document.createElement('p');
+            valeurPara.textContent = `Valeur : ${valeur}`;
+            const deleteSpan = document.createElement('span');
+            deleteSpan.classList.add("spanDelete");
+            deleteSpan.textContent = "❌";
+            deleteSpan.addEventListener('click', (e) => {
+                console.log("SPAN",nom)
+                deleteCookie(e, nom);
+            });
+    
+            postit.appendChild(nomPara);
+            postit.appendChild(valeurPara);
+            postit.appendChild(deleteSpan);
+            containerPostit.appendChild(postit);
         });
-        deleteSpans = document.querySelectorAll(".spanDelete")
-        deleteSpans.forEach((span) => {
-            span.addEventListener('click', (e) => {
-                deleteCookie(e, listCookies)
-            })
-
-        })
     }
 }
 
-function deleteCookie(e, listCookies) {
-    let id = e.target.parentNode.getAttribute('name')
-    let nameAsupprimer = listCookies[id].split("=")
+function deleteCookie(e, nom) {
+  
 
-    document.cookie = `${nameAsupprimer[0]}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;`
+    document.cookie = `${nom}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;`
     e.target.parentNode.remove()
     pop("supp")
 }
