@@ -2,8 +2,8 @@ const btnAffiche = document.getElementById("btnafficher");
 const monForm = document.querySelector('.monForm');
 const container = document.querySelector(".container")
 const inputs = document.querySelectorAll("input[type='text']")
+containerPostit.innerHTML
 
-document.cookie = "coincoin=John Doe";
 
 monForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -36,7 +36,6 @@ function createCookie(inputs){
     let nom ;
     let valeur;
     inputs.forEach(input => {        
-        console.log(input)
         if(input.name == "nom") nom = input.value
         if(input.name == "valeur") valeur = input.value 
     });    
@@ -44,6 +43,16 @@ function createCookie(inputs){
 }
 
 function readCookie(){
-    return document.cookie
+    const listCookies = document.cookie.split(";")
+    let nom;
+    let valeur;
+
+    listCookies.forEach(cookie => {
+        cookie = cookie.split("=")       
+            containerPostit.innerHTML += `<div id="postit">
+            <p>Nom : ${cookie[0]} </p>
+            <p>Valeur : ${cookie[1]}</p>
+            <span id="spanDelete">❌</span>
+          </div>`
+    }); 
 }
-// C R U D
