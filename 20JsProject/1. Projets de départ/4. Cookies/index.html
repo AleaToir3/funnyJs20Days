@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cookies en JS</title>
-    <link rel="stylesheet" href="style.css" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-      <div class="container">
-        <h1>🍪 Coooooooooookie 🍪</h1>
-        <form class="monForm">
-            <label for="nom">Entre le nom</label>
-            <input type="text" name="nom" id="nom">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cookies en JS</title>
+  <link rel="stylesheet" href="style.css" />
 
-            <label for="valeur">Entre la valeur</label>
-            <input type="text" name="valeur" id="valeur">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+</head>
 
-            <div class="validation">
-             <input type="submit" value="Valider" class="btn">
-             <button class="btn" id="btnafficher">Afficher</button>
-            </div>
+<body>
+  <div class="container">
+    <h1>🍪 Coooooooooookie 🍪</h1>
+    <form class="monForm">
+      <label for="nom">Entre le nom</label>
+      <input type="text" name="nom" id="nom">
 
-        </form>
-        <div id="containerPostit">
-          
-        </div>
+      <label for="valeur">Entre la valeur</label>
+      <input type="text" name="valeur" id="valeur">
 
-        <div id="popupValidation"></div>
+      <div class="validation">
+        <input type="submit" value="Valider" class="btn">
+        <button class="btn" id="btnafficher">Afficher</button>
       </div>
-    <script src="app.js"></script>
-  </body>
+
+    </form>
+    <div id="containerPostit">
+
+    </div>
+
+    <div id="popupValidation"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+
 </html>
