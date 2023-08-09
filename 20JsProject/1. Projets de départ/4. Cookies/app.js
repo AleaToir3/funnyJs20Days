@@ -2,21 +2,17 @@ const btnAffiche = document.getElementById("btnafficher");
 const monForm = document.querySelector('.monForm');
 const container = document.querySelector(".container")
 const inputs = document.querySelectorAll("input[type='text']")
-containerPostit.innerHTML
-
 
 monForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log('=================valider===================');
-    createCookie(inputs)
+    inputs[0].value && inputs[1].value ? createCookie(inputs) : console.log('y a rien')
  
     pop()
 });
 
-
 btnAffiche.addEventListener('click', (e) => {
     e.preventDefault();  
-    console.log(readCookie())
+    readCookie()
     e.stopPropagation();  
 });
 
@@ -46,13 +42,27 @@ function readCookie(){
     const listCookies = document.cookie.split(";")
     let nom;
     let valeur;
-
-    listCookies.forEach(cookie => {
-        cookie = cookie.split("=")       
-            containerPostit.innerHTML += `<div id="postit">
+    listCookies.forEach((cookie,indexCookie) => {
+        // console.log('le cookie',cookie,"sonINDEX:",indexCookie)
+        cookie = cookie.split("=")
+            containerPostit.innerHTML += `<div id="postit" name=${indexCookie}>
             <p>Nom : ${cookie[0]} </p>
             <p>Valeur : ${cookie[1]}</p>
-            <span id="spanDelete">❌</span>
+            <span class="spanDelete">❌</span>
           </div>`
+
+          const deleteSpans = document.querySelectorAll(".spanDelete")
+        //   console.log(deleteSpans)
+          deleteSpans.forEach((span)=>{
+            span.addEventListener('click',(e)=>{
+                // deleteCookie(listCookies,indexCookie)
+            })
+
+          }) 
     }); 
+}
+
+function deleteCookie(listDecookie,indexAsupprimer){
+// console.log(listDecookie)
+// console.log(indexAsupprimer)
 }
