@@ -40,7 +40,7 @@ function pop(status) {
 }
 
 function createCookie(nom,valeur) {
-    return document.cookie = `${nom} = ${valeur}`
+    return document.cookie = `${encodeURIComponent(nom)} = ${encodeURIComponent(valeur)}`
 }
 
 function readCookie() {
