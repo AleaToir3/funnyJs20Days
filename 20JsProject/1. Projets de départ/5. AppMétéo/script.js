@@ -2,23 +2,35 @@ const searchCity = document.getElementById('searchCity')
 const displayCity = document.getElementById('displayCity')
 const displayCountry = document.getElementById('displayCountry')
 const temperature = document.getElementById('temperature')
-const myKeyAPI = `ac577a7e-a0ac-48bb-8e31-b876d31b23Y4c`
+const img = document.getElementById('img')
 // https://www.iqair.com/dashboard/api
-const countries = `http://api.airvisual.com/v2/countries?key=ac577a7e-a0ac-48bb-8e31-b876d31b234c`
-const regions = `http://api.airvisual.com/v2/states?country=france&key=ac577a7e-a0ac-48bb-8e31-b876d31b234c`
-const cities = `http://api.airvisual.com/v2/cities?state=Ile-de-France&country=france&key=ac577a7e-a0ac-48bb-8e31-b876d31b234c`
-const url = `http://api.airvisual.com/v2/cities?state=Ile-de-France&country=france&key=ac577a7e-a0ac-48bb-8e31-b876d31b234c`
-const city = `http://api.airvisual.com/v2/city?city=montreuil&state=Ile-de-France&country=france&key=ac577a7e-a0ac-48bb-8e31-b876d31b234c`
-const geo = `http://api.airvisual.com/v2/nearest_city?key=ac577a7e-a0ac-48bb-8e31-b876d31b234c`
- 
-const listCities = fetch(geo)
-    .then(res=>res.json())
+const countries = `countries?`
+const regions = `states?country=france&`
+const cities = `cities?state=Ile-de-France&country=france&`
+const url = `cities?state=Ile-de-France&country=france&`
+const city = `city?city=montreuil&state=Ile-de-France&country=france&`
+const geo = `nearest_city?`
+
+const baseUrl = "http://api.airvisual.com/v2/"
+const keyApi ="key=ac577a7e-a0ac-48bb-8e31-b876d31b234c"
+
+if(searchCity.value){
+
+}else {
+    fetch(baseUrl+geo+keyApi)
+    .then(data=> data.json())
     .then(data=>{
         console.log(data)
+        const { data: { city ,state:country,current: { weather: { ic:image,tp } }} } = data;
+        displayCity.textContent = city
+        displayCountry.textContent = country
+        temperature.textContent = tp
+        img.src = `./img/${image}.png` 
     })
 
-console.log("DEBUT :",searchCity.value)
+}
 
+function data(){}
 //     <label for="pays">Sélectionnez un pays :</label>
 // <select id="pays">
 //   <option value="france">France</option>
@@ -40,4 +52,4 @@ console.log("DEBUT :",searchCity.value)
 //         "ws": 3, //wind speed (m/s)
 //         "wd": 313, //wind direction, as an angle of 360° (N=0, E=90, S=180, W=270)
 //         "ic": "10n" //weather icon code, see below for icon index
-//       }, 
+//       },
