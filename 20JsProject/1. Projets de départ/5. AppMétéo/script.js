@@ -1,55 +1,43 @@
-const searchCity = document.getElementById('searchCity')
-const displayCity = document.getElementById('displayCity')
-const displayCountry = document.getElementById('displayCountry')
-const temperature = document.getElementById('temperature')
-const img = document.getElementById('img')
-// https://www.iqair.com/dashboard/api
-const countries = `countries?`
-const regions = `states?country=france&`
-const cities = `cities?state=Ile-de-France&country=france&`
-const url = `cities?state=Ile-de-France&country=france&`
-const city = `city?city=montreuil&state=Ile-de-France&country=france&`
-const geo = `nearest_city?`
+const loader = document.querySelector(".loader-container");
+const errorInformation = document.querySelector(".error-information");
 
-const baseUrl = "http://api.airvisual.com/v2/"
-const keyApi ="key=ac577a7e-a0ac-48bb-8e31-b876d31b234c"
+async function getWeatherData(){
+  try {
+    const response = await fetch("http://api.airvisual.com/v2/nearest_city?key=0f31c65d-2f34-493b-895c-05b4c85d6e3a")
 
-if(searchCity.value){
+    if(!response.ok) {
+      throw new Error(`Error ${response.status}, ${response.statusText}`)
+    }
 
-}else {
-    fetch(baseUrl+geo+keyApi)
-    .then(data=> data.json())
-    .then(data=>{
-        console.log(data)
-        const { data: { city ,state:country,current: { weather: { ic:image,tp } }} } = data;
-        displayCity.textContent = city
-        displayCountry.textContent = country
-        temperature.textContent = tp
-        img.src = `./img/${image}.png` 
-    })
+    const responseData = await response.json();
+    
+    const sortedData = {
+      city: responseData.data.city,
+      country: responseData.data.country,
+      iconId: responseData.data.current.weather.ic,
+      temperature: responseData.data.current.weather.tp,
+    }
 
+    populateUI(sortedData)
+  }
+  catch (error) {
+    loader.classList.remove("active");
+    errorInformation.textContent = error.message;
+  }
 }
-
-function data(){}
-//     <label for="pays">Sélectionnez un pays :</label>
-// <select id="pays">
-//   <option value="france">France</option>
-//   <option value="espagne">Espagne</option>
-//   <option value="italie">Italie</option>
-//   <option value="allemagne">Allemagne</option>
-// </select>
+getWeatherData()
 
 
-// forecasts": [ //object containing forecast information
-//       {
-//         "ts": "2017-02-01T03:00:00.000Z",  //timestamp
-//         "aqius": 21, //AQI value based on US EPA standard
-//         "aqicn": 7, //AQI value based on China MEP standard
-//         "tp": 8, //temperature in Celsius
-//         "tp_min": 6, //minimum temperature in Celsius
-//         "pr": 976,  //atmospheric pressure in hPa
-//         "hu": 100, //humidity %
-//         "ws": 3, //wind speed (m/s)
-//         "wd": 313, //wind direction, as an angle of 360° (N=0, E=90, S=180, W=270)
-//         "ic": "10n" //weather icon code, see below for icon index
-//       },
+const cityName = document.querySelector(".city-name");
+const countryName = document.querySelector(".country-name");
+const temperature = document.querySelector(".temperature");
+const infoIcon = document.querySelector(".info-icon");
+
+function populateUI(data){
+  cityName.textContent = data.city;
+  countryName.textContent = data.country;
+  temperature.textContent = `${data.temperature}°`;
+  infoIcon.src = `ressources/icons/${data.iconId}.svg`;
+  infoIcon.style.width = "150px";
+  loader.classList.remove("active");
+}
